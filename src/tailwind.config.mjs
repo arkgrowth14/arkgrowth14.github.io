@@ -23,15 +23,15 @@ export default {
                 paragraph: "bitter"
             },
             colors: {
-                deepbrown: '#3B2A20',
-                foreground: '#2B1F17',
+                deepbrown: '#1A1A1A',
+                foreground: '#1A1A1A',
                 destructive: '#DF3131',
                 destructiveforeground: '#FFFFFF',
-                background: '#F9F6F1',
-                secondary: '#F9F6F1',
-                'secondary-foreground': '#2B1F17',
-                'primary-foreground': '#F9F6F1',
-                primary: '#A3521E'
+                background: '#F5F1E8',
+                secondary: '#F5F1E8',
+                'secondary-foreground': '#1A1A1A',
+                'primary-foreground': '#F5F1E8',
+                primary: '#F4B860'
             },
         },
     },
