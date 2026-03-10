@@ -105,7 +105,6 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/20 selection:text-primary overflow-clip">
       <Header />
-
       {/* 
         HERO SECTION 
         Directly inspired by the structural layout of the provided image.
@@ -190,7 +189,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* 
         NARRATIVE BRIDGE 
         A typographic breather section to establish tone before diving into data.
@@ -206,7 +204,6 @@ export default function HomePage() {
           We believe that true wealth is not merely accumulated, but <span className="text-primary italic">architected</span> with intention, foresight, and unwavering discipline.
         </motion.h2>
       </section>
-
       {/* 
         SERVICES SECTION (Dynamic Sticky Layout)
         Utilizes the Canonical 'services' data.
@@ -312,7 +309,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* 
         CREDENTIALS SECTION (Dark Mode Break)
         Utilizes the Canonical 'credentials' data.
@@ -401,7 +397,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* 
         CONTACT SECTION (Editorial Split Layout)
         Preserves the original form logic perfectly.
@@ -431,9 +426,9 @@ export default function HomePage() {
                   <p className="font-paragraph text-lg text-foreground">Monday - Friday: 9:00 AM - 5:00 PM</p>
                 </div>
                 <div>
-                  <h3 className="font-heading text-sm uppercase tracking-widest text-primary mb-2">Direct Contact</h3>
-                  <p className="font-paragraph text-lg text-foreground">advisory@example.com</p>
-                  <p className="font-paragraph text-lg text-foreground">+1 (555) 123-4567</p>
+                  <h3 className="font-heading text-sm uppercase tracking-widest mb-2 text-primary-foreground">Direct Contact</h3>
+                  <p className="font-paragraph text-lg text-foreground">ArkGrowth14@gmail.com</p>
+                  <p className="font-paragraph text-lg text-primary">1 551-497-4438</p>
                 </div>
               </div>
             </motion.div>
@@ -508,7 +503,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       <Footer />
     </div>
   );
