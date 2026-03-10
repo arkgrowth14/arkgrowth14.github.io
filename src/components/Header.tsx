@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Image } from '@/components/ui/image';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,10 +19,22 @@ export default function Header() {
       <div className="max-w-[100rem] mx-auto px-8 md:px-16 py-6">
         <div className="flex items-center justify-between">
           {/* Logo/Brand */}
-          <div className="flex items-center">
-            <h1 className="font-heading text-2xl md:text-3xl text-primary">
-              DRUR
-            </h1>
+          <div className="flex items-center gap-3">
+            <Image
+              src="https://static.wixstatic.com/media/049acc_f37af3ebd13b4d19ac926e2485e0d932~mv2.jpg"
+              alt="ARK Growth Logo"
+              width={50}
+              height={50}
+              className="h-12 w-auto"
+            />
+            <div className="flex flex-col">
+              <h1 className="font-heading text-xl md:text-2xl text-deepbrown leading-tight">
+                ARK
+              </h1>
+              <p className="font-paragraph text-xs md:text-sm text-secondary-foreground">
+                GROWTH
+              </p>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
