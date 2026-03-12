@@ -15,32 +15,24 @@ function Layout() {
 }
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />,
-        routeMetadata: {
-          pageIdentifier: 'home',
-        },
-      },
-      {
-        path: "*",
-        element: <Navigate to="/" replace />,
-      },
-    ],
-  },
+{
+path: "/",
+element: <Layout />,
+errorElement: <ErrorPage />,
+children: [
+{
+index: true,
+element: <HomePage />,
+routeMetadata: {
+pageIdentifier: 'home',
+},
+},
+{
+path: "*",
+element: <Navigate to="/" replace />,
+},
+],
+},
 ], {
-  basename: import.meta.env.BASE_NAME,
+basename: "/Ark-Repo",
 });
-
-export default function AppRouter() {
-  return (
-    <MemberProvider>
-      <RouterProvider router={router} />
-    </MemberProvider>
-  );
-}
