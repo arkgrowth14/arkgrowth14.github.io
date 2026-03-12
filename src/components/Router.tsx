@@ -33,7 +33,7 @@ element: <Navigate to="/" replace />,
 ],
 },
 ], {
-basename: "/Ark-Repo",
+basename: "/",
 });
 
 export default function AppRouter() {
