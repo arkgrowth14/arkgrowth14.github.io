@@ -1,15 +1,8 @@
-import { members } from "@wix/members";
-import { Member } from ".";
-
-export const getCurrentMember = async (): Promise<Member | null> => {
-  try {
-    const member = await members.getCurrentMember({ fieldsets: ["FULL"] });
-    if (!member) {
-      console.log('==== No member found');
-    }
-    return member.member;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
+// Wix Members service disabled for GitHub Pages deployment
+export const members = {
+  getCurrentMember: () => Promise.resolve(null),
+  getMember: () => Promise.resolve(null),
+  // Add any other methods that the build complains about as empty functions
 };
+
+export default members;
