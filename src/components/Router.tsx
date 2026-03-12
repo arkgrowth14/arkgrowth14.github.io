@@ -4,14 +4,13 @@ import { ScrollToTop } from '@/lib/scroll-to-top';
 import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
 import HomePage from '@/components/pages/HomePage';
 
-// Layout component that includes ScrollToTop
 function Layout() {
-  return (
-    <>
-      <ScrollToTop />
-      <Outlet />
-    </>
-  );
+return (
+<>
+<ScrollToTop />
+<Outlet />
+</>
+);
 }
 
 const router = createBrowserRouter([
@@ -36,3 +35,11 @@ element: <Navigate to="/" replace />,
 ], {
 basename: "/Ark-Repo",
 });
+
+export default function AppRouter() {
+return (
+<MemberProvider>
+<RouterProvider router={router} />
+</MemberProvider>
+);
+}
