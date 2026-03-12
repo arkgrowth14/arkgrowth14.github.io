@@ -1,13 +1,14 @@
 ---
-// 1. We removed the Wix SEO import. Standard HTML tags are used instead.
 import { Head } from "@/components/Head";
 import AppRouter from "@/components/Router";
-
-// 2. We removed the Wix Vibe CSS imports because they require a Wix login.
-// You can add standard Tailwind or local CSS here later.
 import "@/styles/global.css";
 
-// 3. We removed the Wix 'loadSEOTagsServiceConfig' call.
+export async function getStaticPaths() {
+return [
+{ params: { slug: undefined } },
+];
+}
+
 const pageTitle = "Ark Growth | Home";
 ---
 
