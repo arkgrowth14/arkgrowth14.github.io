@@ -4,7 +4,7 @@ import react from '@astrojs/react'; // ADD THIS
 
 export default defineConfig({
   site: 'https://arkgrowth14.github.io',
-  base: '/Ark-Repo',
+  base: '',
   integrations: [
     tailwind(), 
     react() // ADD THIS
