@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div>
             <h3 className="font-heading text-3xl text-primary-foreground mb-4">
-              DRUR
+              Ark Growth
             </h3>
             <p className="font-paragraph text-base text-primary-foreground/80">
               Strategic financial advisory services for individuals and businesses seeking sustainable growth and security.
@@ -106,7 +106,7 @@ export default function Footer() {
         <div className="border-t border-primary-foreground/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="font-paragraph text-sm text-primary-foreground/70">
-              © {currentYear} DRUR Financial Advisory. All rights reserved.
+              © {currentYear} Ark Growth Financial Advisory. All rights reserved.
             </p>
             <div className="flex gap-6">
               <a 
