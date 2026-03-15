@@ -82,9 +82,9 @@ export default function HomePage() {
     setIsSubmitting(true);
     setIsSuccess(false);
 
-    // 1. This line "listens" to the URL to see if it came from the QR code
-    const queryParams = new URLSearchParams(window.location.search);
-    const source = queryParams.get('utm_source') || 'Direct Website Visit';
+    // This grabs the "utm_source" from the address bar
+    const urlParams = new URLSearchParams(window.location.search);
+    const sourceTag = urlParams.get('utm_source') || 'Standard Website Visit';
 
     try {
       const response = await fetch("https://formspree.io/f/xkoqzdgz", {
@@ -98,9 +98,9 @@ export default function HomePage() {
           email: formData.email,
           phone: formData.phone,
           message: formData.message,
-          // 2. This adds the "Source" to your Formspree email
-          LeadSource: source, 
-          _subject: `New Lead: ${formData.name} (via ${source})`
+          // This line is what shows up in your email
+          Entry_Source: sourceTag, 
+          _subject: `Strategy Inquiry: ${formData.name} [Source: ${sourceTag}]`
         }),
       });
 
@@ -108,11 +108,9 @@ export default function HomePage() {
         setIsSuccess(true);
         setFormData({ name: '', email: '', phone: '', message: '' });
         setTimeout(() => setIsSuccess(false), 15000);
-      } else {
-        throw new Error("Submission failed");
       }
     } catch (error) {
-      console.error(error);
+      console.error('Submission error:', error);
     } finally {
       setIsSubmitting(false);
     }
