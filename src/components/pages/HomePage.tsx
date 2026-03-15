@@ -82,9 +82,9 @@ export default function HomePage() {
     setIsSubmitting(true);
     setIsSuccess(false);
 
-    // This grabs the "utm_source" from the address bar
+    // Get the source from the URL
     const urlParams = new URLSearchParams(window.location.search);
-    const sourceTag = urlParams.get('utm_source') || 'Standard Website Visit';
+    const sourceTag = urlParams.get('utm_source') || 'Direct Website Visit';
 
     try {
       const response = await fetch("https://formspree.io/f/xkoqzdgz", {
@@ -93,29 +93,43 @@ export default function HomePage() {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
+        // We simplified the keys to plain lowercase strings for better compatibility
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
           message: formData.message,
-          // This line is what shows up in your email
-          Entry_Source: sourceTag, 
-          _subject: `Strategy Inquiry: ${formData.name} [Source: ${sourceTag}]`
+          source: sourceTag, // Simplified key
+          _subject: `Strategy Inquiry: ${formData.name} [via ${sourceTag}]`
         }),
       });
 
       if (response.ok) {
         setIsSuccess(true);
         setFormData({ name: '', email: '', phone: '', message: '' });
+        
+        toast({
+          title: "Inquiry Sent",
+          description: "I will be in touch shortly.",
+        });
+
         setTimeout(() => setIsSuccess(false), 15000);
+      } else {
+        // If Formspree returns an error (like 429 or 405), this catches it
+        const data = await response.json();
+        throw new Error(data.error || "Submission failed");
       }
     } catch (error) {
       console.error('Submission error:', error);
+      toast({
+        title: "Error",
+        description: "Please email ArkGrowth14@gmail.com directly.",
+        variant: "destructive"
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
-
   // --- ANIMATION SETTINGS ---
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: heroScroll } = useScroll({
