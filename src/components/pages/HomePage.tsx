@@ -96,6 +96,7 @@ export default function HomePage() {
       });
 
       if (response.ok) {
+        alert("Success! Form submitted."); // <--- Add this temporary line
         toast({
           title: "Inquiry Received",
           description: "Thank you. Let's grab 15 minutes next week to see if my strategy fits your goals.",
