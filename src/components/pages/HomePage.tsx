@@ -71,23 +71,23 @@ export default function HomePage() {
           email: formData.email,
           phone: formData.phone,
           message: formData.message,
+          _subject: `New QR Inquiry from ${formData.name}` // Tells you it came from the form
         }),
       });
 
       if (response.ok) {
         toast({
-         title: "Inquiry Received",
-         description: "Thank you. I've received your details. Let's grab 15 minutes next week to see if my strategy fits your goals.",
+          title: "Inquiry Received",
+          description: "Thank you. Let's grab 15 minutes next week to see if my strategy fits your goals.",
         });
-        // Clear the form fields
         setFormData({ name: '', email: '', phone: '', message: '' });
       } else {
-        throw new Error("Submission failed");
+        throw new Error("Form submission failed");
       }
     } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: "Something went wrong. Please email ArkGrowth14@gmail.com directly.",
         variant: "destructive"
       });
     } finally {
