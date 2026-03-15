@@ -76,8 +76,8 @@ export default function HomePage() {
 
       if (response.ok) {
         toast({
-          title: "Message Sent",
-          description: "Thank you for your inquiry. We'll be in touch soon.",
+         title: "Inquiry Received",
+         description: "Thank you. I've received your details. Let's grab 15 minutes next week to see if my strategy fits your goals.",
         });
         // Clear the form fields
         setFormData({ name: '', email: '', phone: '', message: '' });
