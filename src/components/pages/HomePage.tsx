@@ -82,6 +82,10 @@ export default function HomePage() {
     setIsSubmitting(true);
     setIsSuccess(false);
 
+    // 1. This line "listens" to the URL to see if it came from the QR code
+    const queryParams = new URLSearchParams(window.location.search);
+    const source = queryParams.get('utm_source') || 'Direct Website Visit';
+
     try {
       const response = await fetch("https://formspree.io/f/xkoqzdgz", {
         method: "POST",
@@ -94,31 +98,21 @@ export default function HomePage() {
           email: formData.email,
           phone: formData.phone,
           message: formData.message,
-          _subject: `QR Strategy Inquiry from ${formData.name}`
+          // 2. This adds the "Source" to your Formspree email
+          LeadSource: source, 
+          _subject: `New Lead: ${formData.name} (via ${source})`
         }),
       });
 
       if (response.ok) {
         setIsSuccess(true);
         setFormData({ name: '', email: '', phone: '', message: '' });
-        
-        // Internal toast backup
-        toast({
-          title: "Inquiry Received",
-          description: "Check your inbox for a confirmation.",
-        });
-        
-        // Reset success message after 15 seconds
         setTimeout(() => setIsSuccess(false), 15000);
       } else {
         throw new Error("Submission failed");
       }
     } catch (error) {
-      toast({
-        title: "Error",
-        description: "Something went wrong. Please email ArkGrowth14@gmail.com directly.",
-        variant: "destructive"
-      });
+      console.error(error);
     } finally {
       setIsSubmitting(false);
     }
