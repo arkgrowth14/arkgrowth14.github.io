@@ -18,8 +18,8 @@ export default function Header() {
     <header className="w-full bg-secondary border-b border-primary/10 sticky top-0 z-50">
       <div className="max-w-[100rem] mx-auto px-8 md:px-16 py-6">
         <div className="flex items-center justify-between">
-       {/* Logo/Brand */}
-<div className="flex items-center gap-4 flex-nowrap shrink-0">
+{/* Logo/Brand */}
+<div className="flex items-center gap-4 shrink-0">
   <Image
     src="https://static.wixstatic.com/media/049acc_f37af3ebd13b4d19ac926e2485e0d932~mv2.jpg"
     alt="ARK Growth Logo"
@@ -27,11 +27,15 @@ export default function Header() {
     height={50}
     className="h-12 w-auto"
   />
-  {/* THIS IS THE FIX: Added whitespace-nowrap and used one container */}
-  <h1 className="font-heading text-xl md:text-2xl text-deepbrown whitespace-nowrap flex items-baseline gap-2">
-    <span>ARK</span>
-    <span className="font-paragraph text-xs md:text-sm text-secondary-foreground uppercase tracking-widest">
-      Growth
+  
+  <h1 className="flex items-center gap-2 whitespace-nowrap">
+    {/* ARK - Solid Black & Bold */}
+    <span className="font-heading text-2xl md:text-3xl text-[#1A1A1A] font-bold tracking-tight">
+      ARK
+    </span>
+    {/* GROWTH - Solid Black but lighter weight and spaced out */}
+    <span className="font-heading text-2xl md:text-3xl text-[#1A1A1A] font-light tracking-[0.2em]">
+      GROWTH
     </span>
   </h1>
 </div>
