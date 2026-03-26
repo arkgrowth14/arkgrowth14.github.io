@@ -11,6 +11,7 @@
         :root {
             --brand-bg: #F3EFE0;
             --brand-gold: #B8860B;
+            --brand-gold-light: #FACC15;
             --brand-text: #1A1A1A;
             --brand-muted: #5E5E5E;
         }
@@ -19,21 +20,13 @@
 
         body { 
             font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: var(--brand-bg);
+            margin: 0; padding: 0; 
+            background-color: var(--brand-bg); 
             color: var(--brand-text);
-            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* --- FORCED FADE-IN ANIMATION --- */
-        @keyframes logoEntrance {
-            0% { opacity: 0; transform: translateY(15px); filter: blur(4px); }
-            100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-        }
-
-        /* --- HERO SECTION --- */
+        /* --- HERO & GOLDEN SWEEP --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -44,130 +37,155 @@
             padding: 20px;
         }
 
-        .hero img {
-            width: 90%;
-            max-width: 450px;
-            mix-blend-multiply: multiply;
-            opacity: 0; /* Starts hidden */
+        .logo-wrapper {
+            position: relative;
+            overflow: hidden; 
+            display: inline-block;
+            line-height: 0;
+            padding: 10px;
         }
 
-        /* This class is added by JavaScript once the page loads */
-        .animate-now {
-            animation: logoEntrance 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+        .hero img {
+            width: 100%;
+            max-width: 450px;
+            mix-blend-multiply: multiply;
+            display: block;
+        }
+
+        .logo-wrapper::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(
+                to right, 
+                rgba(184, 134, 11, 0) 0%, 
+                rgba(250, 204, 21, 0.4) 40%, 
+                rgba(255, 255, 255, 0.7) 50%, 
+                rgba(250, 204, 21, 0.4) 60%, 
+                rgba(184, 134, 11, 0) 100%
+            );
+            transform: skewX(-25deg);
+            animation: goldenSweep 6s infinite ease-in-out;
+        }
+
+        @keyframes goldenSweep {
+            0% { left: -150%; }
+            15% { left: 150%; }
+            100% { left: 150%; }
         }
 
         .tagline {
             font-family: 'Playfair Display', serif;
-            margin-top: 20px;
+            margin-top: 30px;
             font-size: 1.1rem;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--brand-muted);
-            opacity: 0;
         }
 
-        /* --- STRATEGY SECTION (RESPONSIVE GRID) --- */
+        /* --- STRATEGY SECTION --- */
         .container { 
-            max-width: 1000px; 
-            margin: 0 auto 80px auto; 
-            padding: 0 24px;
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px;
         }
 
         .strategy-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Side-by-side on PC */
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
         }
 
         .service-card {
             background: #FFFFFF;
-            padding: 40px 30px;
-            border-radius: 2px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            border-top: 3px solid var(--brand-gold);
+            padding: 40px;
+            border-top: 4px solid var(--brand-gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
         }
 
-        /* --- MOBILE FIXES (Phone) --- */
-        @media (max-width: 768px) {
-            .hero { height: 85vh; } /* Tighter hero on mobile */
-            
-            .hero img { max-width: 300px; }
-
-            .tagline { 
-                font-size: 0.85rem; 
-                letter-spacing: 0.15em; 
-                padding: 0 10px;
-            }
-
-            .strategy-grid {
-                grid-template-columns: 1fr; /* Stacked on Phone - NO BLANK SPACE */
-                gap: 20px;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-                text-align: left;
-            }
-
-            .container { margin-top: -5vh; } /* Pull content up to reduce gaps */
+        /* --- ROTATING GOLD SUN (FOOTER) --- */
+        .footer-sun-container {
+            padding: 100px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
-        .cta-button {
-            margin-top: 30px;
-            display: inline-block;
-            padding: 12px 24px;
-            border: 1px solid var(--brand-gold);
-            color: var(--brand-gold);
-            text-decoration: none;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
+        .gold-sun {
+            width: 80px;
+            height: 80px;
+            background: var(--brand-gold);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 20px rgba(184, 134, 11, 0.3);
+            /* This animation makes the sun "pulse" and rotate */
+            animation: rotateSun 20s linear infinite;
+        }
+
+        /* Creating the Rays to match your logo */
+        .gold-sun::before {
+            content: "";
+            position: absolute;
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
+            border: 2px dashed var(--brand-gold);
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        @keyframes rotateSun {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .footer-text {
+            margin-top: 20px;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            color: var(--brand-gold);
             font-weight: 600;
-            opacity: 0;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .hero { height: 75vh; }
+            .hero img { max-width: 320px; }
+            .strategy-grid { grid-template-columns: 1fr; gap: 20px; }
+            .tagline { font-size: 0.85rem; letter-spacing: 0.15em; }
         }
     </style>
 </head>
 <body>
 
     <header class="hero">
-        <img id="main-logo" src="1.jpg" alt="Ark Growth Logo">
-        <p id="main-tagline" class="tagline">Strategic Financial Illumination</p>
-        <a id="main-cta" href="mailto:contact@arkgrowth.com" class="cta-button">Introductory Call</a>
+        <div class="logo-wrapper">
+            <img src="1.jpg" alt="Ark Growth Logo">
+        </div>
+        <p class="tagline">Strategic Financial Illumination</p>
     </header>
 
     <main class="container">
         <div class="strategy-grid">
             <div class="service-card">
-                <h2 class="section-title">Comprehensive Advisory</h2>
+                <h2 style="font-family: 'Playfair Display';">Comprehensive Advisory</h2>
                 <p>Strategic oversight for long-term wealth preservation and growth architecture.</p>
             </div>
-
             <div class="service-card">
-                <h2 class="section-title">Wealth Architecture</h2>
+                <h2>Wealth Architecture</h2>
                 <p>Designing custom frameworks for capital efficiency and risk-adjusted returns.</p>
             </div>
         </div>
+
+        <div class="footer-sun-container">
+            <div class="gold-sun"></div>
+            <p class="footer-text">Ark Growth Strategy</p>
+        </div>
     </main>
 
-    <script>
-        // FORCING THE FADE-IN ON LOAD
-        window.addEventListener('load', () => {
-            const logo = document.getElementById('main-logo');
-            const tagline = document.getElementById('main-tagline');
-            const cta = document.getElementById('main-cta');
-
-            // Trigger animations with slight delays for a "sequence"
-            setTimeout(() => logo.classList.add('animate-now'), 100);
-            setTimeout(() => tagline.classList.add('animate-now'), 500);
-            setTimeout(() => cta.classList.add('animate-now'), 900);
-        });
-    </script>
 </body>
 </html>
