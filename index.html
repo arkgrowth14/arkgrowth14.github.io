@@ -13,6 +13,7 @@
             --brand-gold: #B8860B;
             --brand-text: #1A1A1A;
             --brand-muted: #5E5E5E;
+            --btn-orange: #F3B664;
         }
 
         * { box-sizing: border-box; }
@@ -25,167 +26,151 @@
             overflow-x: hidden;
         }
 
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh;
+        /* --- THE NAVIGATION BAR FIX --- */
+        .nav-container {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .logo-wrapper {
-            position: relative;
-            overflow: hidden; 
-            display: inline-block;
-            line-height: 0;
-            padding: 15px;
-        }
-
-        .hero img {
-            width: 100%;
-            max-width: 450px;
-            mix-blend-multiply: multiply;
-            display: block;
-        }
-
-        /* THE GOLDEN SWEEP */
-        .logo-wrapper::after {
-            content: "";
-            position: absolute;
+            justify-content: space-between; /* Pushes Logo Left, Menu Right */
+            padding: 20px 4%;
+            background-color: var(--brand-bg);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: sticky;
             top: 0;
-            left: -150%;
-            width: 65%;
-            height: 100%;
-            background: linear-gradient(
-                to right, 
-                rgba(184, 134, 11, 0) 0%, 
-                rgba(250, 204, 21, 0.4) 40%, 
-                rgba(255, 255, 255, 0.8) 50%, 
-                rgba(250, 204, 21, 0.4) 60%, 
-                rgba(184, 134, 11, 0) 100%
-            );
-            transform: skewX(-25deg);
-            animation: goldenSweep 7s infinite ease-in-out;
+            z-index: 1000;
         }
 
-        @keyframes goldenSweep {
-            0% { left: -150%; }
-            15% { left: 150%; }
-            100% { left: 150%; }
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            min-width: max-content; /* Prevents logo from squishing */
         }
 
-        .tagline {
+        .logo-group img {
+            height: 45px;
+            mix-blend-multiply: multiply;
+        }
+
+        .logo-text {
             font-family: 'Playfair Display', serif;
-            margin-top: 30px;
-            font-size: 1.1rem;
-            letter-spacing: 0.3em;
+            font-size: 1.6rem;
+            color: var(--brand-text);
+            letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--brand-muted);
+            white-space: nowrap; /* FORCES ONE LINE */
         }
 
-        /* --- CONTENT SECTION --- */
+        /* MENU LINKS */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--brand-text);
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover { color: var(--brand-gold); }
+
+        .btn-cta {
+            background-color: var(--btn-orange);
+            color: white !important;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- MAIN CONTENT --- */
         .container { 
             max-width: 1100px; 
-            margin: 0 auto; 
+            margin: 100px auto; 
             padding: 0 24px;
         }
 
         .strategy-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 35px;
-            margin-bottom: 60px;
+            gap: 40px;
         }
 
         .service-card {
             background: #FFFFFF;
-            padding: 45px 35px;
-            border-top: 4px solid var(--brand-gold);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.04);
+            padding: 50px 40px;
+            border-top: 5px solid var(--brand-gold);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.04);
         }
 
-        h2 { font-family: 'Playfair Display', serif; margin-top: 0; }
+        h2 { font-family: 'Playfair Display', serif; margin-top: 0; font-size: 1.8rem; }
 
-        /* --- FINAL SEAL (THE SUN) --- */
+        /* --- THE BULLETPROOF SUN SEAL --- */
         .final-seal {
             text-align: center;
-            padding: 80px 0;
-            clear: both;
+            padding: 120px 0;
         }
 
-        .sun-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto;
-            border: 2px solid var(--brand-gold);
-            border-radius: 50%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            /* Added a subtle rotation to keep it "matching your logo" style */
-            animation: slowRotate 20s linear infinite;
-        }
-
-        .sun-icon::after {
-            content: "";
-            width: 20px;
-            height: 20px;
-            background: var(--brand-gold);
-            border-radius: 50%;
+        .sun-svg {
+            width: 70px;
+            height: 70px;
+            fill: var(--brand-gold);
+            animation: slowRotate 25s linear infinite;
         }
 
         @keyframes slowRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from { transform: rotate(0deg); } to { transform: rotate(360deg); }
         }
 
-        .footer-text {
-            letter-spacing: 5px; 
-            color: var(--brand-gold); 
-            font-size: 10px; 
-            margin-top: 20px; 
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        /* --- MOBILE RESPONSIVENESS --- */
-        @media (max-width: 768px) {
-            .hero { height: 80vh; }
-            .hero img { max-width: 310px; }
-            .strategy-grid { grid-template-columns: 1fr; gap: 20px; }
-            .tagline { font-size: 0.85rem; letter-spacing: 0.2em; }
+        /* --- MOBILE LAYOUT --- */
+        @media (max-width: 900px) {
+            .nav-container { flex-direction: column; gap: 20px; padding: 20px; }
+            .nav-menu { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .strategy-grid { grid-template-columns: 1fr; }
+            .logo-text { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="logo-wrapper">
+    <nav class="nav-container">
+        <a href="#" class="logo-group">
             <img src="1.jpg" alt="Ark Growth Logo">
-        </div>
-        <p class="tagline">Strategic Financial Illumination</p>
-    </header>
+            <span class="logo-text">Ark Growth</span>
+        </a>
+
+        <ul class="nav-menu">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" class="btn-cta">Get In Touch</a></li>
+        </ul>
+    </nav>
 
     <main class="container">
         <div class="strategy-grid">
             <div class="service-card">
                 <h2>Comprehensive Advisory</h2>
-                <p>Strategic oversight for long-term wealth preservation and multi-generational growth architecture.</p>
+                <p>Strategic oversight for long-term wealth preservation and growth architecture.</p>
             </div>
             <div class="service-card">
                 <h2>Wealth Architecture</h2>
-                <p>Designing custom structural frameworks to maximize capital efficiency and mitigate risk at scale.</p>
+                <p>Designing custom structural frameworks to maximize capital efficiency.</p>
             </div>
         </div>
 
         <div class="final-seal">
-            <div class="sun-icon"></div>
-            <p class="footer-text">Ark Growth Strategy</p>
+            <svg class="sun-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+            </svg>
+            <p style="letter-spacing: 5px; color: var(--brand-gold); font-size: 11px; margin-top: 20px; text-transform: uppercase; font-weight: 600;">Ark Growth Strategy</p>
         </div>
     </main>
 
