@@ -3,141 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ark Growth | Strategic Financial Consulting</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-
+    <title>Ark Growth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --brand-bg: #F3EFE0;
-            --brand-gold: #B8860B;
-            --brand-text: #1A1A1A;
+        /* This block forces the brand onto one line and ensures the sun is visible */
+        body { background-color: #F3EFE0 !important; margin: 0; padding: 0; font-family: sans-serif; }
+        
+        .header { 
+            display: flex !important; 
+            justify-content: space-between !important; 
+            align-items: center !important; 
+            padding: 20px 5% !important; 
         }
 
-        body { 
-            margin: 0; padding: 0; 
-            background-color: var(--brand-bg) !important; 
-            font-family: 'Inter', sans-serif;
-            color: var(--brand-text);
-        }
-
-        /* --- THE HEADER (FORCES ONE LINE) --- */
-        .header-wrapper {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            padding: 25px 5% !important;
-            background: var(--brand-bg) !important;
-            width: 100% !important;
-        }
-
-        .logo-flex {
-            display: flex !important;
-            align-items: center !important;
-            gap: 12px !important;
+        .brand { 
+            display: flex !important; 
+            align-items: center !important; 
+            white-space: nowrap !important; /* THE FIX: Stops Ark Growth from breaking */
             text-decoration: none !important;
-            white-space: nowrap !important; /* PREVENTS WRAPPING */
-            flex-shrink: 0 !important;
         }
 
-        /* THE "CODE-ONLY" LOGO (REPLACES 1.JPG) */
-        .sun-logo-svg {
-            width: 42px !important;
-            height: 42px !important;
-            fill: var(--brand-gold) !important;
+        .brand span { 
+            font-family: 'Playfair Display', serif !important; 
+            font-size: 24px !important; 
+            color: #1A1A1A !important; 
+            text-transform: uppercase !important; 
+            margin-left: 10px !important;
         }
 
-        .logo-text {
-            font-family: 'Playfair Display', serif !important;
-            font-size: 1.7rem !important;
-            color: var(--brand-text) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 3px !important;
-            font-weight: 600 !important;
-        }
+        /* THE SUN ICON */
+        .sun { width: 40px; height: 40px; fill: #B8860B; }
 
-        /* --- NAVIGATION --- */
-        .nav-links {
-            display: flex !important;
-            gap: 30px !important;
-            list-style: none !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            align-items: center !important;
-        }
+        .nav { display: flex; gap: 20px; list-style: none; }
+        .nav a { text-decoration: none; color: #1A1A1A; font-size: 14px; }
 
-        .nav-links a {
-            text-decoration: none !important;
-            color: var(--brand-text) !important;
-            font-size: 0.85rem !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1px !important;
-        }
-
-        .cta-box {
-            background: #F3B664 !important;
-            padding: 12px 22px !important;
-            border-radius: 4px !important;
-            color: white !important;
-            font-weight: 600 !important;
-        }
-
-        /* --- THE BULLETPROOF SUN FOOTER --- */
-        .sun-footer {
-            margin-top: 150px !important;
-            padding: 60px 0 !important;
-            text-align: center !important;
-            clear: both !important;
-        }
-
-        .sun-footer-svg {
-            width: 80px !important;
-            height: 80px !important;
-            fill: var(--brand-gold) !important;
-            margin: 0 auto !important;
-            animation: slowRotate 30s linear infinite;
-        }
-
-        @keyframes slowRotate {
-            from { transform: rotate(0deg); } to { transform: rotate(360deg); }
-        }
-
-        /* --- RESPONSIVE FIX --- */
-        @media (max-width: 850px) {
-            .header-wrapper { flex-direction: column !important; gap: 20px !important; text-align: center !important; }
-            .nav-links { gap: 15px !important; flex-wrap: wrap; justify-content: center !important; }
+        .footer-sun { 
+            text-align: center !important; 
+            margin-top: 100px !important; 
+            padding-bottom: 50px !important; 
         }
     </style>
 </head>
 <body>
 
-    <header class="header-wrapper">
-        <a href="#" class="logo-flex">
-            <svg class="sun-logo-svg" viewBox="0 0 24 24">
-                <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
-            </svg>
-            <span class="logo-text">Ark Growth</span>
+    <div class="header">
+        <a href="#" class="brand">
+            <svg class="sun" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>
+            <span>Ark Growth</span>
         </a>
-
-        <ul class="nav-links">
-            <li><a href="#">About</a></li>
+        <ul class="nav">
             <li><a href="#">Services</a></li>
             <li><a href="#">Contact</a></li>
-            <li><a href="#" class="cta-box">Get In Touch</a></li>
         </ul>
-    </header>
-
-    <div style="padding: 100px 5%; text-align: center;">
-        <h1 style="font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 20px;">Strategic Assets</h1>
-        <p style="max-width: 600px; margin: 0 auto; line-height: 1.6; color: #555;">Sophisticated financial architecture for modern wealth management.</p>
     </div>
 
-    <footer class="sun-footer">
-        <svg class="sun-footer-svg" viewBox="0 0 24 24">
-            <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
-        </svg>
-        <p style="letter-spacing: 6px; color: var(--brand-gold); font-size: 11px; margin-top: 25px; text-transform: uppercase; font-weight: 600;">Ark Growth Strategy</p>
-    </footer>
+    <div style="text-align: center; padding: 100px 20px;">
+        <h1 style="color: #B8860B; font-family: 'Playfair Display';">Strategic Assets</h1>
+    </div>
+
+    <div class="footer-sun">
+        <svg class="sun" style="width: 80px; height: 80px;" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>
+        <p style="color: #B8860B; letter-spacing: 5px; font-size: 10px; margin-top: 10px;">ARK GROWTH STRATEGY</p>
+    </div>
 
 </body>
 </html>
