@@ -18,6 +18,8 @@
 
         * { box-sizing: border-box; }
 
+        html { scroll-behavior: smooth; }
+
         body { 
             font-family: 'Inter', sans-serif; 
             margin: 0; padding: 0; 
@@ -26,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* --- HERO & GOLDEN SWEEP --- */
+        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -37,12 +39,13 @@
             padding: 20px;
         }
 
+        /* LOGO WRAPPER & GOLDEN SWEEP */
         .logo-wrapper {
             position: relative;
             overflow: hidden; 
             display: inline-block;
             line-height: 0;
-            padding: 10px;
+            padding: 15px;
         }
 
         .hero img {
@@ -57,18 +60,18 @@
             position: absolute;
             top: 0;
             left: -150%;
-            width: 60%;
+            width: 65%;
             height: 100%;
             background: linear-gradient(
                 to right, 
                 rgba(184, 134, 11, 0) 0%, 
                 rgba(250, 204, 21, 0.4) 40%, 
-                rgba(255, 255, 255, 0.7) 50%, 
+                rgba(255, 255, 255, 0.8) 50%, 
                 rgba(250, 204, 21, 0.4) 60%, 
                 rgba(184, 134, 11, 0) 100%
             );
             transform: skewX(-25deg);
-            animation: goldenSweep 6s infinite ease-in-out;
+            animation: goldenSweep 7s infinite ease-in-out;
         }
 
         @keyframes goldenSweep {
@@ -81,111 +84,68 @@
             font-family: 'Playfair Display', serif;
             margin-top: 30px;
             font-size: 1.1rem;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--brand-muted);
+            font-weight: 400;
         }
 
-        /* --- STRATEGY SECTION --- */
+        /* --- STRATEGY SECTION (MOBILE FLAWLESS) --- */
         .container { 
             max-width: 1100px; 
-            margin: 0 auto; 
-            padding: 0 20px;
+            margin: 0 auto 120px auto; 
+            padding: 0 24px;
         }
 
         .strategy-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            grid-template-columns: 1fr 1fr; /* 2 Columns on PC */
+            gap: 35px;
         }
 
         .service-card {
             background: #FFFFFF;
-            padding: 40px;
+            padding: 45px 35px;
             border-top: 4px solid var(--brand-gold);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease;
         }
 
-        /* --- ROTATING GOLD SUN (FOOTER) --- */
-        .footer-sun-container {
-            padding: 100px 0;
+        .service-card:hover { transform: translateY(-8px); }
+
+        h2 { 
+            font-family: 'Playfair Display', serif; 
+            margin-top: 0; 
+            font-size: 1.6rem;
+            color: var(--brand-text); 
+        }
+
+        p { color: var(--brand-muted); font-size: 1.05rem; line-height: 1.7; }
+
+        /* --- THE FIXED ROTATING GOLDEN SUN --- */
+        .gold-sun-anchor {
+            position: fixed;
+            bottom: 35px;
+            right: 35px;
+            z-index: 1000;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
         }
 
         .gold-sun {
-            width: 80px;
-            height: 80px;
+            width: 55px;
+            height: 55px;
             background: var(--brand-gold);
             border-radius: 50%;
             position: relative;
-            box-shadow: 0 0 20px rgba(184, 134, 11, 0.3);
-            /* This animation makes the sun "pulse" and rotate */
-            animation: rotateSun 20s linear infinite;
+            box-shadow: 0 0 20px rgba(184, 134, 11, 0.4);
+            animation: rotateSun 18s linear infinite;
         }
 
-        /* Creating the Rays to match your logo */
+        /* The Sun Rays */
         .gold-sun::before {
             content: "";
-            position: absolute;
-            top: -10px; left: -10px; right: -10px; bottom: -10px;
-            border: 2px dashed var(--brand-gold);
-            border-radius: 50%;
-            opacity: 0.5;
-        }
-
-        @keyframes rotateSun {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .footer-text {
-            margin-top: 20px;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--brand-gold);
-            font-weight: 600;
-        }
-
-        /* --- MOBILE RESPONSIVENESS --- */
-        @media (max-width: 768px) {
-            .hero { height: 75vh; }
-            .hero img { max-width: 320px; }
-            .strategy-grid { grid-template-columns: 1fr; gap: 20px; }
-            .tagline { font-size: 0.85rem; letter-spacing: 0.15em; }
-        }
-    </style>
-</head>
-<body>
-
-    <header class="hero">
-        <div class="logo-wrapper">
-            <img src="1.jpg" alt="Ark Growth Logo">
-        </div>
-        <p class="tagline">Strategic Financial Illumination</p>
-    </header>
-
-    <main class="container">
-        <div class="strategy-grid">
-            <div class="service-card">
-                <h2 style="font-family: 'Playfair Display';">Comprehensive Advisory</h2>
-                <p>Strategic oversight for long-term wealth preservation and growth architecture.</p>
-            </div>
-            <div class="service-card">
-                <h2>Wealth Architecture</h2>
-                <p>Designing custom frameworks for capital efficiency and risk-adjusted returns.</p>
-            </div>
-        </div>
-
-        <div class="footer-sun-container">
-            <div class="gold-sun"></div>
-            <p class="footer-text">Ark Growth Strategy</p>
-        </div>
-    </main>
-
-</body>
-</html>
+            position
