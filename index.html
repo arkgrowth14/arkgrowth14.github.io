@@ -27,23 +27,10 @@
             overflow-x: hidden;
         }
 
-        /* --- ROBUST FADE-IN ANIMATIONS --- */
+        /* --- FORCED FADE-IN ANIMATION --- */
         @keyframes logoEntrance {
-            0% { 
-                opacity: 0; 
-                transform: translateY(20px); 
-                filter: blur(5px);
-            }
-            100% { 
-                opacity: 1; 
-                transform: translateY(0); 
-                filter: blur(0);
-            }
-        }
-
-        @keyframes subtleSlide {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% { opacity: 0; transform: translateY(15px); filter: blur(4px); }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
 
         /* --- HERO SECTION --- */
@@ -58,180 +45,129 @@
         }
 
         .hero img {
-            width: 100%;
-            max-width: 500px;
-            mix-blend-multiply: multiply; 
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05));
-            /* Animation Trigger */
-            animation: logoEntrance 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            opacity: 0; 
+            width: 90%;
+            max-width: 450px;
+            mix-blend-multiply: multiply;
+            opacity: 0; /* Starts hidden */
+        }
+
+        /* This class is added by JavaScript once the page loads */
+        .animate-now {
+            animation: logoEntrance 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
         }
 
         .tagline {
             font-family: 'Playfair Display', serif;
-            margin-top: 24px;
-            font-size: 1.2rem;
-            letter-spacing: 0.25em;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--brand-muted);
-            font-weight: 400;
-            /* Delayed Animation */
-            animation: logoEntrance 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
             opacity: 0;
         }
 
-        /* --- CALL TO ACTION BUTTON --- */
-        .cta-button {
-            margin-top: 40px;
-            padding: 12px 30px;
-            border: 1px solid var(--brand-gold);
-            color: var(--brand-gold);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            animation: logoEntrance 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
-        }
-
-        .cta-button:hover {
-            background: var(--brand-gold);
-            color: white;
-        }
-
-        /* --- CONTENT SECTION --- */
+        /* --- STRATEGY SECTION (RESPONSIVE GRID) --- */
         .container { 
-            max-width: 900px; 
-            margin: 0 auto 100px auto; 
-            padding: 0 20px;
-            animation: subtleSlide 1s ease-out 1.2s both; 
+            max-width: 1000px; 
+            margin: 0 auto 80px auto; 
+            padding: 0 24px;
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Side-by-side on PC */
+            gap: 40px;
+            margin-top: 50px;
         }
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 2px;
-            background: var(--brand-gold);
-            margin: 15px auto 0;
-        }
-
-        /* --- REPOSITORY CARDS --- */
-        #file-list { 
-            list-style: none; 
-            padding: 0; 
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        li { 
-            background: #FFFFFF; 
-            padding: 30px; 
+        .service-card {
+            background: #FFFFFF;
+            padding: 40px 30px;
             border-radius: 2px;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            border-bottom: 3px solid transparent;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border-top: 3px solid var(--brand-gold);
         }
 
-        li:hover { 
-            transform: translateY(-8px);
-            border-bottom: 3px solid var(--brand-gold);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        /* --- MOBILE FIXES (Phone) --- */
+        @media (max-width: 768px) {
+            .hero { height: 85vh; } /* Tighter hero on mobile */
+            
+            .hero img { max-width: 300px; }
+
+            .tagline { 
+                font-size: 0.85rem; 
+                letter-spacing: 0.15em; 
+                padding: 0 10px;
+            }
+
+            .strategy-grid {
+                grid-template-columns: 1fr; /* Stacked on Phone - NO BLANK SPACE */
+                gap: 20px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                text-align: left;
+            }
+
+            .container { margin-top: -5vh; } /* Pull content up to reduce gaps */
         }
 
-        .file-name {
-            color: var(--brand-text);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .file-category {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+        .cta-button {
+            margin-top: 30px;
+            display: inline-block;
+            padding: 12px 24px;
+            border: 1px solid var(--brand-gold);
             color: var(--brand-gold);
-            margin-bottom: 5px;
-        }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 40px;
-            font-size: 0.65rem;
-            letter-spacing: 4px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            opacity: 0.5;
-        }
-
-        @media (max-width: 600px) {
-            .hero img { max-width: 320px; }
-            .tagline { font-size: 0.9rem; letter-spacing: 0.15em; }
+            font-weight: 600;
+            opacity: 0;
         }
     </style>
 </head>
 <body>
 
     <header class="hero">
-        <img src="1.jpg" alt="Ark Growth Logo">
-        <p class="tagline">Strategic Financial Illumination</p>
-        
-        <a href="mailto:contact@arkgrowth.com" class="cta-button">Book 15-Min Intro Call</a>
-        
-        <div class="scroll-hint">Scroll to Portfolio</div>
+        <img id="main-logo" src="1.jpg" alt="Ark Growth Logo">
+        <p id="main-tagline" class="tagline">Strategic Financial Illumination</p>
+        <a id="main-cta" href="mailto:contact@arkgrowth.com" class="cta-button">Introductory Call</a>
     </header>
 
     <main class="container">
-        <h2 class="section-title">Strategic Assets</h2>
-        <ul id="file-list">
-            <li style="opacity: 0.5; text-align: center;">Analyzing repository...</li>
-        </ul>
+        <div class="strategy-grid">
+            <div class="service-card">
+                <h2 class="section-title">Comprehensive Advisory</h2>
+                <p>Strategic oversight for long-term wealth preservation and growth architecture.</p>
+            </div>
+
+            <div class="service-card">
+                <h2 class="section-title">Wealth Architecture</h2>
+                <p>Designing custom frameworks for capital efficiency and risk-adjusted returns.</p>
+            </div>
+        </div>
     </main>
 
     <script>
-        async function fetchFiles() {
-            try {
-                const response = await fetch('https://api.github.com/repos/arkgrowth14/Ark-Repo/contents/');
-                const files = await response.json();
-                const listElement = document.getElementById('file-list');
-                listElement.innerHTML = '';
+        // FORCING THE FADE-IN ON LOAD
+        window.addEventListener('load', () => {
+            const logo = document.getElementById('main-logo');
+            const tagline = document.getElementById('main-tagline');
+            const cta = document.getElementById('main-cta');
 
-                files.forEach(file => {
-                    if (file.name !== 'index.html' && !file.name.startsWith('.')) {
-                        const li = document.createElement('li');
-                        const ext = file.name.split('.').pop().toUpperCase();
-                        const type = (ext === 'JS' || ext === 'JSX' || ext === 'CSS') ? 'Technical Asset' : 'Strategy Document';
-
-                        li.innerHTML = `
-                            <div>
-                                <span class="file-category">${type}</span>
-                                <a class="file-name" href="${file.html_url}" target="_blank">${file.name}</a>
-                            </div>
-                            <small style="color: #999; margin-top: 15px;">View Resource →</small>
-                        `;
-                        listElement.appendChild(li);
-                    }
-                });
-            } catch (error) {
-                document.getElementById('file-list').innerHTML = '<li>Unable to load strategic assets at this time.</li>';
-            }
-        }
-        
-        window.onload = fetchFiles;
+            // Trigger animations with slight delays for a "sequence"
+            setTimeout(() => logo.classList.add('animate-now'), 100);
+            setTimeout(() => tagline.classList.add('animate-now'), 500);
+            setTimeout(() => cta.classList.add('animate-now'), 900);
+        });
     </script>
 </body>
 </html>
