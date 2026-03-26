@@ -11,14 +11,11 @@
         :root {
             --brand-bg: #F3EFE0;
             --brand-gold: #B8860B;
-            --brand-gold-light: #FACC15;
             --brand-text: #1A1A1A;
             --brand-muted: #5E5E5E;
         }
 
         * { box-sizing: border-box; }
-
-        html { scroll-behavior: smooth; }
 
         body { 
             font-family: 'Inter', sans-serif; 
@@ -39,7 +36,6 @@
             padding: 20px;
         }
 
-        /* LOGO WRAPPER & GOLDEN SWEEP */
         .logo-wrapper {
             position: relative;
             overflow: hidden; 
@@ -55,6 +51,7 @@
             display: block;
         }
 
+        /* THE GOLDEN SWEEP */
         .logo-wrapper::after {
             content: "";
             position: absolute;
@@ -87,20 +84,20 @@
             letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--brand-muted);
-            font-weight: 400;
         }
 
-        /* --- STRATEGY SECTION (MOBILE FLAWLESS) --- */
+        /* --- CONTENT SECTION --- */
         .container { 
             max-width: 1100px; 
-            margin: 0 auto 120px auto; 
+            margin: 0 auto; 
             padding: 0 24px;
         }
 
         .strategy-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* 2 Columns on PC */
+            grid-template-columns: 1fr 1fr;
             gap: 35px;
+            margin-bottom: 60px;
         }
 
         .service-card {
@@ -108,44 +105,89 @@
             padding: 45px 35px;
             border-top: 4px solid var(--brand-gold);
             box-shadow: 0 12px 35px rgba(0,0,0,0.04);
-            transition: transform 0.3s ease;
         }
 
-        .service-card:hover { transform: translateY(-8px); }
+        h2 { font-family: 'Playfair Display', serif; margin-top: 0; }
 
-        h2 { 
-            font-family: 'Playfair Display', serif; 
-            margin-top: 0; 
-            font-size: 1.6rem;
-            color: var(--brand-text); 
+        /* --- FINAL SEAL (THE SUN) --- */
+        .final-seal {
+            text-align: center;
+            padding: 80px 0;
+            clear: both;
         }
 
-        p { color: var(--brand-muted); font-size: 1.05rem; line-height: 1.7; }
-
-        /* --- THE FIXED ROTATING GOLDEN SUN --- */
-        .gold-sun-anchor {
-            position: fixed;
-            bottom: 35px;
-            right: 35px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .gold-sun {
-            width: 55px;
-            height: 55px;
-            background: var(--brand-gold);
+        .sun-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            border: 2px solid var(--brand-gold);
             border-radius: 50%;
             position: relative;
-            box-shadow: 0 0 20px rgba(184, 134, 11, 0.4);
-            animation: rotateSun 18s linear infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            /* Added a subtle rotation to keep it "matching your logo" style */
+            animation: slowRotate 20s linear infinite;
         }
 
-        /* The Sun Rays */
-        .gold-sun::before {
+        .sun-icon::after {
             content: "";
-            position
+            width: 20px;
+            height: 20px;
+            background: var(--brand-gold);
+            border-radius: 50%;
+        }
+
+        @keyframes slowRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .footer-text {
+            letter-spacing: 5px; 
+            color: var(--brand-gold); 
+            font-size: 10px; 
+            margin-top: 20px; 
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .hero { height: 80vh; }
+            .hero img { max-width: 310px; }
+            .strategy-grid { grid-template-columns: 1fr; gap: 20px; }
+            .tagline { font-size: 0.85rem; letter-spacing: 0.2em; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="logo-wrapper">
+            <img src="1.jpg" alt="Ark Growth Logo">
+        </div>
+        <p class="tagline">Strategic Financial Illumination</p>
+    </header>
+
+    <main class="container">
+        <div class="strategy-grid">
+            <div class="service-card">
+                <h2>Comprehensive Advisory</h2>
+                <p>Strategic oversight for long-term wealth preservation and multi-generational growth architecture.</p>
+            </div>
+            <div class="service-card">
+                <h2>Wealth Architecture</h2>
+                <p>Designing custom structural frameworks to maximize capital efficiency and mitigate risk at scale.</p>
+            </div>
+        </div>
+
+        <div class="final-seal">
+            <div class="sun-icon"></div>
+            <p class="footer-text">Ark Growth Strategy</p>
+        </div>
+    </main>
+
+</body>
+</html>
