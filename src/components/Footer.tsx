@@ -1,130 +1,45 @@
-import { Mail, Phone, MapPin } from 'lucide-react';
+import React from 'react';
 
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
+const Footer = () => {
   return (
-    <footer className="w-full bg-deepbrown text-primary-foreground">
-      <div className="max-w-[100rem] mx-auto px-8 md:px-16 py-16 lg:py-20">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Brand Column */}
-          <div>
-            <h3 className="font-heading text-3xl text-primary-foreground mb-4">
-              Ark Growth
-            </h3>
-            <p className="font-paragraph text-base text-primary-foreground/80">
-              Strategic financial advisory services for individuals and businesses seeking sustainable growth and security.
-            </p>
-          </div>
+    <footer style={{ 
+      backgroundColor: '#F3EFE0', 
+      padding: '80px 0', 
+      textAlign: 'center', 
+      width: '100%',
+      clear: 'both' 
+    }}>
+      <div style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        justifyContent: 'center' 
+      }}>
+        
+        {/* THE GOLDEN SUN SVG - This is "Bulletproof" code */}
+        <svg 
+          width="70" 
+          height="70" 
+          viewBox="0 0 24 24" 
+          style={{ fill: '#B8860B', marginBottom: '20px' }}
+          className="animate-spin-slow"
+        >
+          <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+        </svg>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-heading text-xl text-primary-foreground mb-4">
-              Quick Links
-            </h4>
-            <ul className="space-y-3">
-              <li>
-                <button
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  className="font-paragraph text-base text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  About
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="font-paragraph text-base text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  Services
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="font-paragraph text-base text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  Contact
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Information */}
-          <div>
-            <h4 className="font-heading text-xl text-primary-foreground mb-4">
-              Contact
-            </h4>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <Mail size={20} className="text-primary-foreground/80 mt-1 flex-shrink-0" />
-                <a 
-                  href="mailto:ArkGrowth14@gmail..com"
-                  className="font-paragraph text-base text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  ArkGrowth14@gmail.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Phone size={20} className="text-primary-foreground/80 mt-1 flex-shrink-0" />
-                <a 
-                  href="tel:+15514974438"
-                  className="font-paragraph text-base text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  +1 (551) 497-4438
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin size={20} className="text-primary-foreground/80 mt-1 flex-shrink-0" />
-                <span className="font-paragraph text-base text-primary-foreground/80">
-                  East Brunswick, New Jersey
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Business Hours */}
-          <div>
-            <h4 className="font-heading text-xl text-primary-foreground mb-4">
-              Business Hours
-            </h4>
-            <ul className="space-y-2">
-              <li className="font-paragraph text-base text-primary-foreground/80">
-                Monday - Friday
-              </li>
-              <li className="font-paragraph text-base text-primary-foreground/80">
-                9:00 AM - 5:00 PM
-              </li>
-              <li className="font-paragraph text-base text-primary-foreground/80 mt-4">
-                Appointments Available
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-primary-foreground/20 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="font-paragraph text-sm text-primary-foreground/70">
-              © {currentYear} Ark Growth Financial Advisory. All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              <a 
-                href="#privacy"
-                className="font-paragraph text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
-              >
-                Privacy Policy
-              </a>
-              <a 
-                href="#terms"
-                className="font-paragraph text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
-              >
-                Terms of Service
-              </a>
-            </div>
-          </div>
-        </div>
+        <p style={{ 
+          letterSpacing: '5px', 
+          color: '#B8860B', 
+          fontSize: '11px', 
+          textTransform: 'uppercase', 
+          fontWeight: '600',
+          margin: 0
+        }}>
+          Ark Growth Strategy
+        </p>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;
