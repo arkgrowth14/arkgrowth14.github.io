@@ -18,29 +18,34 @@ export default function Header() {
     <header className="w-full bg-secondary border-b border-primary/10 sticky top-0 z-50">
       <div className="max-w-[100rem] mx-auto px-8 md:px-16 py-6">
         <div className="flex items-center justify-between">
-{/* Logo/Brand */}
-<div className="flex items-center gap-4 shrink-0">
-  <Image
-    src="https://static.wixstatic.com/media/049acc_f37af3ebd13b4d19ac926e2485e0d932~mv2.jpg"
-    alt="ARK Growth Logo"
-    width={50}
-    height={50}
-    className="h-12 w-auto"
-  />
-  
-  <h1 className="flex items-center gap-2 whitespace-nowrap">
-    {/* ARK - Solid Black & Bold */}
-    <span className="font-heading text-2xl md:text-3xl text-[#1A1A1A] font-bold tracking-tight">
-      ARK
-    </span>
-    {/* GROWTH - Solid Black but lighter weight and spaced out */}
-    <span className="font-heading text-2xl md:text-3xl text-[#1A1A1A] font-light tracking-[0.2em]">
-      GROWTH
-    </span>
-  </h1>
-</div>
+          
+          {/* Logo/Brand Section */}
+          <div className="flex items-center shrink-0">
+            <Image
+              src="https://static.wixstatic.com/media/049acc_f37af3ebd13b4d19ac926e2485e0d932~mv2.jpg"
+              alt="ARK Growth Logo"
+              width={50}
+              height={50}
+              className="h-12 w-auto"
+            />
+            
+            {/* The Fix: 
+               1. 'ml-8' adds space between the icon and the text.
+               2. 'whitespace-nowrap' keeps it on one line.
+               3. Single 'h1' ensures consistent font treatment.
+            */}
+            <h1 className="ml-8 flex items-center gap-3 whitespace-nowrap">
+              <span className="font-heading text-2xl md:text-3xl text-[#1A1A1A] font-bold tracking-tight">
+                ARK
+              </span>
+              <span className="font-heading text-2xl md:text-3xl text-[#1A1A1A] font-light tracking-[0.2em]">
+                GROWTH
+              </span>
+            </h1>
+          </div>
+
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-10">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="font-paragraph text-base text-secondary-foreground hover:text-primary transition-colors"
@@ -61,7 +66,7 @@ export default function Header() {
             </button>
             <Button
               onClick={() => scrollToSection('contact')}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 px-6"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6"
             >
               Get In Touch
             </Button>
