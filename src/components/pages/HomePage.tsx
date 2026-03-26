@@ -33,10 +33,9 @@ export default function HomePage() {
     loadCredentials();
   }, []);
 
-  // --- STATIC DATA LOADERS (Fixes TypeError: fs.getAll) ---
+  // --- STATIC DATA LOADERS ---
   const loadServices = async () => {
     try {
-      // Hardcoded data ensures your site works even if the DB service is offline
       setServices([
         {
           _id: '1',
@@ -82,7 +81,6 @@ export default function HomePage() {
     setIsSubmitting(true);
     setIsSuccess(false);
 
-    // Get the source from the URL
     const urlParams = new URLSearchParams(window.location.search);
     const sourceTag = urlParams.get('utm_source') || 'Direct Website Visit';
 
@@ -93,13 +91,12 @@ export default function HomePage() {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
-        // We simplified the keys to plain lowercase strings for better compatibility
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
           message: formData.message,
-          source: sourceTag, // Simplified key
+          source: sourceTag,
           _subject: `Strategy Inquiry: ${formData.name} [via ${sourceTag}]`
         }),
       });
@@ -107,15 +104,12 @@ export default function HomePage() {
       if (response.ok) {
         setIsSuccess(true);
         setFormData({ name: '', email: '', phone: '', message: '' });
-        
         toast({
           title: "Inquiry Sent",
           description: "I will be in touch shortly.",
         });
-
         setTimeout(() => setIsSuccess(false), 15000);
       } else {
-        // If Formspree returns an error (like 429 or 405), this catches it
         const data = await response.json();
         throw new Error(data.error || "Submission failed");
       }
@@ -130,6 +124,7 @@ export default function HomePage() {
       setIsSubmitting(false);
     }
   };
+
   // --- ANIMATION SETTINGS ---
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: heroScroll } = useScroll({
@@ -153,11 +148,10 @@ export default function HomePage() {
       {/* HERO SECTION */}
       <section ref={heroRef} className="relative w-full pt-24 lg:pt-0 border-b border-deepbrown/15">
         <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[90vh] lg:min-h-screen">
-          <div className="flex flex-col justify-between border-r border-deepbrown/15 relative z-10 bg-background">
-            <motion.div 
-              style={{ y: heroTextY }}
-              className="p-8 md:p-16 lg:p-24 flex-grow flex flex-col justify-center"
-            >
+          
+          {/* LEFT SIDE: HEADLINE */}
+          <div className="flex flex-col justify-center border-r border-deepbrown/15 relative z-10 bg-background p-8 md:p-16 lg:p-24">
+            <motion.div style={{ y: heroTextY }}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -172,26 +166,21 @@ export default function HomePage() {
                   Expert advisory services tailored to help you achieve lasting financial security, clarity, and generational growth.
                 </p>
                 
-                <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-                  <Button 
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="bg-primary text-primary-foreground hover:bg-deepbrown rounded-none px-8 py-7 text-base font-paragraph tracking-wide transition-colors duration-300"
-                  >
-                    Schedule Consultation
-                  </Button>
-                </div>
+                <Button 
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-primary text-primary-foreground hover:bg-deepbrown rounded-none px-8 py-7 text-base font-paragraph tracking-wide transition-colors duration-300"
+                >
+                  Schedule Consultation
+                </Button>
               </motion.div>
             </motion.div>
-            <div className="grid grid-cols-2 border-t border-deepbrown/15 h-48 lg:h-64">
-              <div className="p-8 flex items-end">
-                <p className="font-paragraph text-sm text-deepbrown/70 max-w-[200px] leading-relaxed">
-                  Grounded in expertise, focused on your holistic financial well-being.
-                </p>
-              </div>
-            </div>
           </div>
-          <div className="relative h-[60vh] lg:h-auto overflow-hidden bg-deepbrown">
+
+          {/* RIGHT SIDE: IMAGE + INTEGRATED TAGLINE */}
+          <div className="relative h-[70vh] lg:h-auto overflow-hidden bg-deepbrown flex items-center justify-center">
+            {/* Background Image with Parallax */}
             <motion.div style={{ y: heroImageY }} className="absolute inset-0 w-full h-[120%]">
+              <div className="absolute inset-0 bg-black/40 z-10" /> {/* Dark overlay for text readability */}
               <Image 
                 src="https://static.wixstatic.com/media/049acc_28f627c3284b4daebd278dd113336744~mv2.png?originWidth=1152&originHeight=576"
                 alt="Financial planning"
@@ -199,6 +188,19 @@ export default function HomePage() {
                 width={1200}
               />
             </motion.div>
+
+            {/* INTEGRATED TAGLINE (Always Centered) */}
+            <div className="relative z-20 p-8 md:p-16 text-center">
+              <motion.p 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.5, duration: 1 }}
+                className="font-paragraph text-2xl md:text-3xl lg:text-4xl text-white font-light leading-relaxed tracking-wide drop-shadow-lg"
+              >
+                “Grounded in expertise, focused on your holistic financial well-being.”
+              </motion.p>
+              <div className="mt-8 w-16 h-[1px] bg-primary mx-auto" />
+            </div>
           </div>
         </div>
       </section>
@@ -274,7 +276,6 @@ export default function HomePage() {
                 placeholder="How can we assist you? *"
               />
 
-              {/* SUCCESS MESSAGE BOX */}
               <AnimatePresence>
                 {isSuccess && (
                   <motion.div 
