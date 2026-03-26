@@ -3,19 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ark Growth Explorer</title>
+    <title>Ark Growth | Strategic Financial Consulting</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
     <style>
-        /* 1. MATCHING YOUR LOGO BACKGROUND */
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background: #F3EFE0; /* Exact match to your logo */
-            color: #2D2D2D; 
-            scroll-behavior: smooth;
+        :root {
+            --brand-bg: #F3EFE0;
+            --brand-gold: #B8860B;
+            --brand-text: #1A1A1A;
+            --brand-muted: #5E5E5E;
         }
 
-        /* 2. HERO ENTRANCE STYLES */
+        * { box-sizing: border-box; }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--brand-bg);
+            color: var(--brand-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- FADE IN ANIMATIONS --- */
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.98) translateY(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @keyframes subtleSlide {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -24,106 +47,162 @@
             justify-content: center;
             text-align: center;
             padding: 20px;
+            animation: fadeInScale 1.5s ease-out forwards;
         }
 
         .hero img {
             width: 100%;
             max-width: 500px;
-            /* This helps the logo blend into the background */
-            mix-blend-multiply: multiply; 
+            mix-blend-multiply: multiply; /* Blends logo into cream background */
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05));
         }
 
         .tagline {
-            margin-top: 20px;
-            font-size: 1.1rem;
-            letter-spacing: 0.3em;
+            font-family: 'Playfair Display', serif;
+            margin-top: 24px;
+            font-size: 1.2rem;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: #555;
-            font-weight: 300;
+            color: var(--brand-muted);
+            font-weight: 400;
         }
 
-        /* 3. REPOSITORY LIST STYLES */
+        /* --- CONTENT SECTION --- */
         .container { 
-            max-width: 800px; 
-            margin: 40px auto; 
-            padding: 20px;
+            max-width: 900px; 
+            margin: 0 auto 100px auto; 
+            padding: 0 20px;
+            animation: subtleSlide 1s ease-out 0.8s both; /* Delayed fade in */
         }
 
-        h1 { 
-            color: #1A1A1A; 
-            border-bottom: 2px solid #E2DCC8; 
-            padding-bottom: 10px; 
-            font-size: 1.5rem;
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
         }
 
-        ul { list-style: none; padding: 0; }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: var(--brand-gold);
+            margin: 15px auto 0;
+        }
+
+        /* --- REPOSITORY CARDS --- */
+        #file-list { 
+            list-style: none; 
+            padding: 0; 
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
 
         li { 
-            background: #FFFFFF; /* White cards for contrast */
-            margin: 12px 0; 
-            padding: 18px; 
-            border-radius: 12px; 
-            transition: 0.3s; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            background: #FFFFFF; 
+            padding: 30px; 
+            border-radius: 2px; /* Professional sharp edges */
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border-bottom: 3px solid transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
         li:hover { 
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            border-bottom: 3px solid var(--brand-gold);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
-        a { 
-            color: #B8860B; /* Gold/Deep Yellow to match the sun */
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 1.1rem; 
+        .file-name {
+            color: var(--brand-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: block;
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
+        .file-category {
             font-size: 0.7rem;
-            letter-spacing: 0.2em;
             text-transform: uppercase;
-            opacity: 0.6;
+            letter-spacing: 1.5px;
+            color: var(--brand-gold);
+            margin-bottom: 5px;
+        }
+
+        /* --- SCROLL INDICATOR --- */
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 600px) {
+            .hero img { max-width: 320px; }
+            .tagline { font-size: 0.9rem; letter-spacing: 0.15em; }
         }
     </style>
 </head>
 <body>
 
-    <div class="hero">
+    <header class="hero">
         <img src="1.jpg" alt="Ark Growth Logo">
-        <p class="tagline">Illuminating Your Financial Future</p>
-        <div class="scroll-indicator">Scroll to Explore Files</div>
-    </div>
+        <p class="tagline">Strategic Financial Illumination</p>
+        <div class="scroll-hint">Scroll to Portfolio</div>
+    </header>
 
-    <div class="container">
-        <h1>Ark Growth | Repository Files</h1>
-        <p>Browsing files in: <strong>arkgrowth14/Ark-Repo</strong></p>
-        <ul id="file-list">Loading files...</ul>
-    </div>
+    <main class="container">
+        <h2 class="section-title">Strategic Assets</h2>
+        <ul id="file-list">
+            <li style="opacity: 0.5; text-align: center;">Analyzing repository...</li>
+        </ul>
+    </main>
 
     <script>
         async function fetchFiles() {
             try {
+                // Fetching from your specific repo
                 const response = await fetch('https://api.github.com/repos/arkgrowth14/Ark-Repo/contents/');
                 const files = await response.json();
                 const listElement = document.getElementById('file-list');
                 listElement.innerHTML = '';
 
                 files.forEach(file => {
-                    // Ignore index.html and hidden files
+                    // Hide internal files
                     if (file.name !== 'index.html' && !file.name.startsWith('.')) {
                         const li = document.createElement('li');
-                        li.innerHTML = `<a href="${file.html_url}" target="_blank">${file.name}</a>`;
+                        
+                        // Determine a "Type" based on file extension for a pro look
+                        const ext = file.name.split('.').pop().toUpperCase();
+                        const type = (ext === 'JS' || ext === 'JSX' || ext === 'CSS') ? 'Technical Asset' : 'Strategy Document';
+
+                        li.innerHTML = `
+                            <div>
+                                <span class="file-category">${type}</span>
+                                <a class="file-name" href="${file.html_url}" target="_blank">${file.name}</a>
+                            </div>
+                            <small style="color: #999; margin-top: 15px;">View Resource →</small>
+                        `;
                         listElement.appendChild(li);
                     }
                 });
             } catch (error) {
-                document.getElementById('file-list').innerHTML = 'Error loading files.';
+                document.getElementById('file-list').innerHTML = '<li>Unable to load strategic assets at this time.</li>';
             }
         }
-        fetchFiles();
+        
+        // Run on load
+        window.onload = fetchFiles;
     </script>
 </body>
 </html>
