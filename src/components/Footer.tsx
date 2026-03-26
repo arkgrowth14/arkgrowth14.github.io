@@ -2,41 +2,55 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer style={{ 
-      backgroundColor: '#F3EFE0', 
-      padding: '80px 0', 
-      textAlign: 'center', 
-      width: '100%',
-      clear: 'both' 
-    }}>
-      <div style={{ 
-        display: 'flex', 
-        flexDirection: 'column', 
-        alignItems: 'center', 
-        justifyContent: 'center' 
-      }}>
+    <footer className="bg-[#F3EFE0] pt-16 pb-8 border-t border-black/5">
+      <div className="max-w-7xl mx-auto px-6">
         
-        {/* THE GOLDEN SUN SVG - This is "Bulletproof" code */}
-        <svg 
-          width="70" 
-          height="70" 
-          viewBox="0 0 24 24" 
-          style={{ fill: '#B8860B', marginBottom: '20px' }}
-          className="animate-spin-slow"
-        >
-          <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
-        </svg>
+        {/* TOP SECTION: LOGO & LINKS */}
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+          
+          {/* BRAND SIDE: Logo and Name on ONE LINE */}
+          <div className="flex items-center gap-4 flex-nowrap min-w-max">
+            {/* Replace 'logo.png' with your actual logo file path */}
+            <img 
+              src="/logo.png" 
+              alt="Ark Growth Logo" 
+              className="h-12 w-auto mix-blend-multiply" 
+            />
+            <span className="font-playfair text-2xl uppercase tracking-tighter whitespace-nowrap text-[#1A1A1A]">
+              Ark Growth
+            </span>
+          </div>
 
-        <p style={{ 
-          letterSpacing: '5px', 
-          color: '#B8860B', 
-          fontSize: '11px', 
-          textTransform: 'uppercase', 
-          fontWeight: '600',
-          margin: 0
-        }}>
-          Ark Growth Strategy
-        </p>
+          {/* QUICK LINKS SIDE */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-12">
+            <div>
+              <h4 className="text-xs uppercase tracking-widest text-[#B8860B] font-bold mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-sm text-[#5E5E5E]">
+                <li><a href="/" className="hover:text-[#B8860B] transition-colors">Home</a></li>
+                <li><a href="/about" className="hover:text-[#B8860B] transition-colors">About</a></li>
+                <li><a href="/services" className="hover:text-[#B8860B] transition-colors">Services</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-xs uppercase tracking-widest text-[#B8860B] font-bold mb-4">Contact</h4>
+              <ul className="space-y-2 text-sm text-[#5E5E5E]">
+                <li><a href="mailto:info@arkgrowth.com" className="hover:text-[#B8860B] transition-colors">Email Us</a></li>
+                <li><a href="/contact" className="hover:text-[#B8860B] transition-colors">Inquiry</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* BOTTOM SECTION: COPYRIGHT */}
+        <div className="pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-[#B8860B] font-bold">
+            Ark Growth Strategy &copy; 2026
+          </p>
+          <p className="text-[10px] text-[#5E5E5E] uppercase tracking-widest">
+            Strategic Financial Illumination
+          </p>
+        </div>
       </div>
     </footer>
   );
