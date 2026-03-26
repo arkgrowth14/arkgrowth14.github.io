@@ -18,25 +18,23 @@ export default function Header() {
     <header className="w-full bg-secondary border-b border-primary/10 sticky top-0 z-50">
       <div className="max-w-[100rem] mx-auto px-8 md:px-16 py-6">
         <div className="flex items-center justify-between">
-          {/* Logo/Brand */}
-          <div className="flex items-center gap-3">
-            <Image
-              src="https://static.wixstatic.com/media/049acc_f37af3ebd13b4d19ac926e2485e0d932~mv2.jpg"
-              alt="ARK Growth Logo"
-              width={50}
-              height={50}
-              className="h-12 w-auto"
-            />
-            <div className="flex flex-col">
-              <h1 className="font-heading text-xl md:text-2xl text-deepbrown leading-tight">
-                ARK
-              </h1>
-              <p className="font-paragraph text-xs md:text-sm text-secondary-foreground">
-                GROWTH
-              </p>
-            </div>
-          </div>
-
+       {/* Logo/Brand */}
+<div className="flex items-center gap-4 flex-nowrap shrink-0">
+  <Image
+    src="https://static.wixstatic.com/media/049acc_f37af3ebd13b4d19ac926e2485e0d932~mv2.jpg"
+    alt="ARK Growth Logo"
+    width={50}
+    height={50}
+    className="h-12 w-auto"
+  />
+  {/* THIS IS THE FIX: Added whitespace-nowrap and used one container */}
+  <h1 className="font-heading text-xl md:text-2xl text-deepbrown whitespace-nowrap flex items-baseline gap-2">
+    <span>ARK</span>
+    <span className="font-paragraph text-xs md:text-sm text-secondary-foreground uppercase tracking-widest">
+      Growth
+    </span>
+  </h1>
+</div>
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <button
