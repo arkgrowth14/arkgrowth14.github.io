@@ -1,4 +1,4 @@
-// HPI 1.7-V (Final Combined Build)
+// HPI 1.7-V (Final Combined Build - FIXED)
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Image } from '@/components/ui/image';
@@ -75,7 +75,6 @@ export default function HomePage() {
     }
   };
 
-  // --- FORMSPREE SUBMISSION LOGIC ---
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -177,13 +176,11 @@ export default function HomePage() {
           </div>
 
           {/* RIGHT SIDE: LIGHT GOLD IMAGE + INTEGRATED TAGLINE */}
-          {/* Reverted background to the light gold/bronze tone of 'bg-deepbrown' (assuming deepbrown is your light gold from variables) */}
           <div className="relative h-[70vh] lg:h-auto overflow-hidden bg-deepbrown flex items-center justify-center">
             
             {/* Background Image with Parallax */}
             <motion.div style={{ y: heroImageY }} className="absolute inset-0 w-full h-[120%]">
-              {/* THE FIX: Changed 'bg-black/40' to 'bg-background/10'.
-                 This uses your creamy background color as a VERY light mist to slightly soften the image without darkening it. */}
+              {/* Overlay fixed - no stray comments inside brackets */}
               <div className="absolute inset-0 bg-background/10 z-10" /> 
               <Image 
                 src="https://static.wixstatic.com/media/049acc_28f627c3284b4daebd278dd113336744~mv2.png?originWidth=1152&originHeight=576"
@@ -193,18 +190,16 @@ export default function HomePage() {
               />
             </motion.div>
 
-            {/* INTEGRATED TAGLINE (Always Centered) */}
+            {/* INTEGRATED TAGLINE */}
             <div className="relative z-20 p-8 md:p-16 text-center">
               <motion.p 
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5, duration: 1 }}
-                {/* THE FIX: Changed 'text-white' to 'text-[#1A1A1A]' (Deep Brown/Black) for readability against the light gold. Added 'drop-shadow-sm'. */}
                 className="font-paragraph text-2xl md:text-3xl lg:text-4xl text-[#1A1A1A] font-light leading-relaxed tracking-wide drop-shadow-sm"
               >
                 “Grounded in expertise, focused on your holistic financial well-being.”
               </motion.p>
-              {/* Thin gold line refined */}
               <div className="mt-8 w-16 h-[1px] bg-primary mx-auto" />
             </div>
           </div>
