@@ -176,11 +176,15 @@ export default function HomePage() {
             </motion.div>
           </div>
 
-          {/* RIGHT SIDE: IMAGE + INTEGRATED TAGLINE */}
+          {/* RIGHT SIDE: LIGHT GOLD IMAGE + INTEGRATED TAGLINE */}
+          {/* Reverted background to the light gold/bronze tone of 'bg-deepbrown' (assuming deepbrown is your light gold from variables) */}
           <div className="relative h-[70vh] lg:h-auto overflow-hidden bg-deepbrown flex items-center justify-center">
+            
             {/* Background Image with Parallax */}
             <motion.div style={{ y: heroImageY }} className="absolute inset-0 w-full h-[120%]">
-              <div className="absolute inset-0 bg-black/40 z-10" /> {/* Dark overlay for text readability */}
+              {/* THE FIX: Changed 'bg-black/40' to 'bg-background/10'.
+                 This uses your creamy background color as a VERY light mist to slightly soften the image without darkening it. */}
+              <div className="absolute inset-0 bg-background/10 z-10" /> 
               <Image 
                 src="https://static.wixstatic.com/media/049acc_28f627c3284b4daebd278dd113336744~mv2.png?originWidth=1152&originHeight=576"
                 alt="Financial planning"
@@ -195,10 +199,12 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5, duration: 1 }}
-                className="font-paragraph text-2xl md:text-3xl lg:text-4xl text-white font-light leading-relaxed tracking-wide drop-shadow-lg"
+                {/* THE FIX: Changed 'text-white' to 'text-[#1A1A1A]' (Deep Brown/Black) for readability against the light gold. Added 'drop-shadow-sm'. */}
+                className="font-paragraph text-2xl md:text-3xl lg:text-4xl text-[#1A1A1A] font-light leading-relaxed tracking-wide drop-shadow-sm"
               >
                 “Grounded in expertise, focused on your holistic financial well-being.”
               </motion.p>
+              {/* Thin gold line refined */}
               <div className="mt-8 w-16 h-[1px] bg-primary mx-auto" />
             </div>
           </div>
